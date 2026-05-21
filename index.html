@@ -137,6 +137,7 @@
   .entry-body { font-size: 0.88rem; color: var(--text-dark); line-height: 1.6; white-space: pre-wrap; }
 
   /* per-entry action menu */
+  /* ── Entry action icons (inline swap) ── */
   .entry-menu-btn {
     width: 36px; height: 36px; border: none; background: none;
     border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;
@@ -144,22 +145,21 @@
   }
   .entry-menu-btn:active { background: var(--bg-section); }
 
-  .entry-actions-panel {
-    display: none; margin-top: 0.7rem; padding-top: 0.7rem;
-    border-top: 1px solid var(--border); gap: 0.5rem; flex-direction: row;
+  .entry-action-icons {
+    display: none; align-items: center; gap: 4px;
   }
-  .entry-actions-panel.show { display: flex !important; }
+  .entry-action-icons.show { display: flex; }
 
-  .action-btn {
-    flex: 1; border: 1px solid var(--border); background: var(--bg-section);
-    border-radius: 10px; padding: 0.55rem 0.5rem;
-    font-family: 'Inter',sans-serif; font-size: 0.78rem; font-weight: 600;
-    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.35rem;
-    color: var(--text-mid);
+  .eai-btn {
+    width: 36px; height: 36px; border: none; border-radius: 8px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    touch-action: manipulation; -webkit-tap-highlight-color: transparent;
   }
-  .action-btn:active { background: var(--green-light); color: var(--green-dark); }
-  .action-btn.del { color: var(--red); border-color: #f0c8c8; background: var(--red-light); }
-  .action-btn.del:active { background: #f5c6c6; }
+  .eai-edit { background: var(--green-light); color: var(--green-dark); }
+  .eai-edit:active { background: #c8dfd0; }
+  .eai-del  { background: var(--red-light);  color: var(--red); }
+  .eai-del:active  { background: #f5c6c6; }
+
 
   /* edit form inside card */
   .entry-edit-form { display: none; margin-top: 0.7rem; }
@@ -398,16 +398,16 @@ function renderEntries() {
     <div class="entry-card" id="ec-${e.id}">
       <div class="entry-meta">
         <span class="entry-date">${SVG.calendar}${fmtDate(e.dt)}</span>
-        <button class="entry-menu-btn" onclick="togglePanel(${e.id}, event)" ontouchend="togglePanel(${e.id}, event)" title="Aktionen">${SVG.more}</button>
+        <div class="entry-controls" id="ctrl-${e.id}" style="display:flex;align-items:center;gap:4px;">
+          <button class="entry-menu-btn" id="more-${e.id}" onclick="togglePanel(${e.id}, event)" ontouchend="togglePanel(${e.id}, event)" title="Aktionen">${SVG.more}</button>
+          <div class="entry-action-icons" id="panel-${e.id}">
+            <button class="eai-btn eai-edit" onclick="openEdit(${e.id})" title="Bearbeiten">${SVG.pencil}</button>
+            <button class="eai-btn eai-del"  onclick="openPinConfirm(${e.id})" title="Löschen">${SVG.trash}</button>
+          </div>
+        </div>
       </div>
 
       <div class="entry-body" id="body-${e.id}">${esc(e.text)}</div>
-
-      <!-- action panel -->
-      <div class="entry-actions-panel" id="panel-${e.id}">
-        <button class="action-btn" onclick="openEdit(${e.id})">${SVG.pencil} Bearbeiten</button>
-        <button class="action-btn del" onclick="openPinConfirm(${e.id})">${SVG.trash} Löschen</button>
-      </div>
 
       <!-- edit form -->
       <div class="entry-edit-form" id="edit-${e.id}">
@@ -439,22 +439,34 @@ function renderEntries() {
     </div>`).join('');
 }
 
-// ── Panel toggle ──
+
+// ── Panel toggle – swaps ··· with edit+delete icons in place ──
 function togglePanel(id, event) {
   if (event) { event.stopPropagation(); event.preventDefault(); }
-  const panel = document.getElementById('panel-'+id);
+  const panel  = document.getElementById('panel-'+id);
+  const more   = document.getElementById('more-'+id);
   const isOpen = panel.classList.contains('show');
   closeAll();
-  if (!isOpen) panel.classList.add('show');
+  if (!isOpen) {
+    panel.classList.add('show');
+    if (more) more.style.display = 'none';
+  }
 }
 
 function closeAll() {
-  document.querySelectorAll('.entry-actions-panel').forEach(el => el.classList.remove('show'));
+  document.querySelectorAll('.entry-action-icons').forEach(el => {
+    el.classList.remove('show');
+    const card = el.closest('.entry-card');
+    if (card) {
+      const more = card.querySelector('.entry-menu-btn');
+      if (more) more.style.display = 'flex';
+    }
+  });
   document.querySelectorAll('.entry-edit-form').forEach(el => el.classList.remove('show'));
   document.querySelectorAll('.pin-confirm').forEach(el => el.classList.remove('show'));
 }
 
-// close panels when tapping outside
+// close when tapping outside
 document.addEventListener('touchstart', function(e) {
   if (!e.target.closest('.entry-card')) closeAll();
 }, { passive: true });
