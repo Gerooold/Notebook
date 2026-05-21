@@ -138,9 +138,9 @@
 
   /* per-entry action menu */
   .entry-menu-btn {
-    width: 30px; height: 30px; border: none; background: none;
+    width: 36px; height: 36px; border: none; background: none;
     border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-    color: var(--text-light);
+    color: var(--text-light); touch-action: manipulation; -webkit-tap-highlight-color: transparent;
   }
   .entry-menu-btn:active { background: var(--bg-section); }
 
@@ -398,7 +398,7 @@ function renderEntries() {
     <div class="entry-card" id="ec-${e.id}">
       <div class="entry-meta">
         <span class="entry-date">${SVG.calendar}${fmtDate(e.dt)}</span>
-        <button class="entry-menu-btn" onclick="togglePanel(${e.id})" title="Aktionen">${SVG.more}</button>
+        <button class="entry-menu-btn" onclick="togglePanel(${e.id}, event)" ontouchend="togglePanel(${e.id}, event)" title="Aktionen">${SVG.more}</button>
       </div>
 
       <div class="entry-body" id="body-${e.id}">${esc(e.text)}</div>
@@ -440,10 +440,10 @@ function renderEntries() {
 }
 
 // ── Panel toggle ──
-function togglePanel(id) {
+function togglePanel(id, event) {
+  if (event) { event.stopPropagation(); event.preventDefault(); }
   const panel = document.getElementById('panel-'+id);
   const isOpen = panel.classList.contains('show');
-  // close all open panels/edits/pin confirms
   closeAll();
   if (!isOpen) panel.classList.add('show');
 }
@@ -453,6 +453,14 @@ function closeAll() {
   document.querySelectorAll('.entry-edit-form').forEach(el => el.classList.remove('show'));
   document.querySelectorAll('.pin-confirm').forEach(el => el.classList.remove('show'));
 }
+
+// close panels when tapping outside
+document.addEventListener('touchstart', function(e) {
+  if (!e.target.closest('.entry-card')) closeAll();
+}, { passive: true });
+document.addEventListener('mousedown', function(e) {
+  if (!e.target.closest('.entry-card')) closeAll();
+});
 
 // ── Edit ──
 function openEdit(id) {
