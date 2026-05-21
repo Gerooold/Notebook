@@ -23,56 +23,29 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
-  body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text-dark);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text-dark); min-height: 100vh; overflow-x: hidden; }
 
   /* ══ LOGIN ══ */
   #login-screen {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1.5rem;
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 2rem 1.5rem;
   }
-
   .app-icon {
     width: 80px; height: 80px;
     background: linear-gradient(145deg, #5A8F6A, #3A6347);
-    border-radius: 20px;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1.5rem;
-    box-shadow: 0 4px 16px rgba(74,124,89,0.3);
-    color: white;
+    border-radius: 20px; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem; box-shadow: 0 4px 16px rgba(74,124,89,0.3); color: white;
   }
-
   .login-title { font-size: 1.7rem; font-weight: 700; text-align: center; margin-bottom: 0.3rem; }
   .login-sub   { font-size: 0.88rem; color: var(--text-light); text-align: center; margin-bottom: 2.5rem; }
-
   .pin-display { display: flex; justify-content: center; gap: 16px; margin-bottom: 2rem; }
-  .pin-dot {
-    width: 13px; height: 13px; border-radius: 50%;
-    border: 2px solid var(--green); background: transparent;
-    transition: background 0.15s;
-  }
+  .pin-dot { width: 13px; height: 13px; border-radius: 50%; border: 2px solid var(--green); background: transparent; transition: background 0.15s; }
   .pin-dot.filled { background: var(--green); }
-
-  .pin-pad {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 12px; width: 100%; max-width: 280px; margin: 0 auto;
-  }
+  .pin-pad { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; width: 100%; max-width: 280px; margin: 0 auto; }
   .pin-btn {
-    background: var(--bg-section); border: 1px solid var(--border);
-    border-radius: 16px; padding: 1.1rem;
+    background: var(--bg-section); border: 1px solid var(--border); border-radius: 16px; padding: 1.1rem;
     font-size: 1.4rem; font-family: 'Inter',sans-serif; font-weight: 600;
-    color: var(--text-dark); cursor: pointer; user-select: none;
-    transition: background 0.12s;
+    color: var(--text-dark); cursor: pointer; user-select: none; transition: background 0.12s;
     display: flex; align-items: center; justify-content: center;
   }
   .pin-btn:active { background: var(--green-light); }
@@ -85,17 +58,14 @@
   #app.visible { display: flex; }
 
   .app-header {
-    padding: 1rem 1.2rem 0.7rem;
-    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.2rem 0.7rem; border-bottom: 1px solid var(--border);
     display: flex; align-items: center; justify-content: space-between;
     background: var(--bg); position: sticky; top: 0; z-index: 100;
   }
   .header-left h1 { font-size: 1.2rem; font-weight: 700; }
   .header-left span { font-size: 0.75rem; color: var(--text-light); }
-
   .icon-btn {
-    width: 36px; height: 36px;
-    background: var(--bg-section); border: 1px solid var(--border);
+    width: 36px; height: 36px; background: var(--bg-section); border: 1px solid var(--border);
     border-radius: 10px; display: flex; align-items: center; justify-content: center;
     cursor: pointer; color: var(--text-mid);
   }
@@ -103,112 +73,132 @@
 
   /* ── Tab Bar ── */
   .tab-bar {
-    display: flex; background: var(--bg);
-    border-top: 1px solid var(--border);
+    display: flex; background: var(--bg); border-top: 1px solid var(--border);
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
   .tab-item {
     flex: 1; display: flex; flex-direction: column; align-items: center;
-    padding: 0.6rem 0.4rem 0.5rem; gap: 3px;
-    cursor: pointer; border: none; background: none;
-    color: var(--text-light); font-family: 'Inter',sans-serif;
-    font-size: 0.68rem; font-weight: 500; transition: color 0.15s;
+    padding: 0.6rem 0.4rem 0.5rem; gap: 3px; cursor: pointer; border: none; background: none;
+    color: var(--text-light); font-family: 'Inter',sans-serif; font-size: 0.68rem; font-weight: 500; transition: color 0.15s;
   }
   .tab-item.active { color: var(--green); }
 
   /* ── Content ── */
   .tab-content { display: none; flex: 1; padding: 1.2rem 1.2rem 5.5rem; }
   .tab-content.active { display: block; }
-
   .section-header {
     font-size: 0.72rem; font-weight: 600; color: var(--text-light);
-    text-transform: uppercase; letter-spacing: 0.06em;
-    margin: 1.4rem 0 0.5rem;
+    text-transform: uppercase; letter-spacing: 0.06em; margin: 1.4rem 0 0.5rem;
   }
   .section-header:first-child { margin-top: 0; }
-
   .list-card { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 0.3rem; }
 
   /* ── Form ── */
   .form-label { font-size: 0.75rem; font-weight: 600; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; display: block; }
   .form-input, .form-textarea {
     width: 100%; background: var(--bg-section); border: 1px solid var(--border);
-    border-radius: 12px; padding: 0.8rem 1rem;
-    font-family: 'Inter',sans-serif; font-size: 0.92rem; color: var(--text-dark);
-    outline: none; -webkit-appearance: none; transition: border-color 0.15s;
+    border-radius: 12px; padding: 0.8rem 1rem; font-family: 'Inter',sans-serif;
+    font-size: 0.92rem; color: var(--text-dark); outline: none; -webkit-appearance: none; transition: border-color 0.15s;
   }
   .form-input:focus, .form-textarea:focus { border-color: var(--green); }
   .form-textarea { min-height: 150px; resize: vertical; line-height: 1.6; }
   .form-group { margin-bottom: 1rem; }
-
   .btn-green {
-    width: 100%; background: var(--green); color: white; border: none;
-    border-radius: 14px; padding: 1rem;
+    width: 100%; background: var(--green); color: white; border: none; border-radius: 14px; padding: 1rem;
     font-family: 'Inter',sans-serif; font-size: 0.95rem; font-weight: 600;
-    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-    transition: background 0.15s;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: background 0.15s;
   }
   .btn-green:active { background: var(--green-dark); }
-
   .save-feedback { text-align: center; color: var(--green); font-size: 0.82rem; font-weight: 600; margin-top: 0.6rem; min-height: 1.1em; opacity: 0; transition: opacity 0.25s; }
   .save-feedback.show { opacity: 1; }
 
   /* ── Log toolbar ── */
   .log-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; gap: 0.5rem; }
   .count-badge { font-size: 0.78rem; font-weight: 600; color: var(--text-light); white-space: nowrap; }
-
   .toolbar-btns { display: flex; gap: 0.4rem; }
-
   .btn-sm {
-    background: var(--green-light); color: var(--green-dark);
-    border: none; border-radius: 10px; padding: 0.45rem 0.8rem;
+    background: var(--green-light); color: var(--green-dark); border: none; border-radius: 10px; padding: 0.45rem 0.8rem;
     font-family: 'Inter',sans-serif; font-size: 0.78rem; font-weight: 600;
-    cursor: pointer; display: flex; align-items: center; gap: 0.3rem;
-    white-space: nowrap;
+    cursor: pointer; display: flex; align-items: center; gap: 0.3rem; white-space: nowrap;
   }
   .btn-sm:active { background: #c8dfd0; }
-  .btn-sm.danger { background: var(--red-light); color: var(--red); }
-  .btn-sm.danger:active { background: #f5c6c6; }
 
   /* ── Entry Cards ── */
   .entry-card {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 0.7rem;
-    border-left: 3px solid var(--green);
+    background: var(--bg); border: 1px solid var(--border); border-radius: 14px;
+    padding: 1rem 1.1rem; margin-bottom: 0.7rem; border-left: 3px solid var(--green);
     animation: slideIn 0.22s ease;
   }
   @keyframes slideIn { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
 
   .entry-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
-  .entry-date { font-size: 0.74rem; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.04em; }
+  .entry-date { font-size: 0.74rem; font-weight: 600; color: var(--text-light); display: flex; align-items: center; gap: 5px; }
+  .entry-body { font-size: 0.88rem; color: var(--text-dark); line-height: 1.6; white-space: pre-wrap; }
 
-  .entry-actions { display: flex; gap: 0.3rem; }
-  .entry-action-btn {
+  /* per-entry action menu */
+  .entry-menu-btn {
     width: 30px; height: 30px; border: none; background: none;
     border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;
     color: var(--text-light);
   }
-  .entry-action-btn:active { background: var(--red-light); color: var(--red); }
+  .entry-menu-btn:active { background: var(--bg-section); }
 
-  .entry-body { font-size: 0.88rem; color: var(--text-dark); line-height: 1.6; white-space: pre-wrap; }
-
-  /* confirm delete overlay */
-  .delete-confirm {
-    display: none; margin-top: 0.7rem; padding: 0.7rem;
-    background: var(--red-light); border-radius: 10px;
-    align-items: center; justify-content: space-between; gap: 0.5rem;
+  .entry-actions-panel {
+    display: none; margin-top: 0.7rem; padding-top: 0.7rem;
+    border-top: 1px solid var(--border); gap: 0.5rem; flex-direction: row;
   }
-  .delete-confirm.show { display: flex; }
-  .delete-confirm span { font-size: 0.8rem; color: var(--red); font-weight: 500; }
-  .del-yes { background: var(--red); color: white; border: none; border-radius: 8px; padding: 0.35rem 0.8rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
-  .del-no  { background: none; color: var(--text-mid); border: 1px solid var(--border); border-radius: 8px; padding: 0.35rem 0.8rem; font-size: 0.8rem; cursor: pointer; }
+  .entry-actions-panel.show { display: flex !important; }
 
+  .action-btn {
+    flex: 1; border: 1px solid var(--border); background: var(--bg-section);
+    border-radius: 10px; padding: 0.55rem 0.5rem;
+    font-family: 'Inter',sans-serif; font-size: 0.78rem; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.35rem;
+    color: var(--text-mid);
+  }
+  .action-btn:active { background: var(--green-light); color: var(--green-dark); }
+  .action-btn.del { color: var(--red); border-color: #f0c8c8; background: var(--red-light); }
+  .action-btn.del:active { background: #f5c6c6; }
+
+  /* edit form inside card */
+  .entry-edit-form { display: none; margin-top: 0.7rem; }
+  .entry-edit-form.show { display: block; }
+  .edit-row { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+  .btn-edit-save {
+    flex: 1; background: var(--green); color: white; border: none; border-radius: 10px;
+    padding: 0.6rem; font-family: 'Inter',sans-serif; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 0.3rem;
+  }
+  .btn-edit-cancel {
+    flex: 1; background: var(--bg-section); color: var(--text-mid); border: 1px solid var(--border);
+    border-radius: 10px; padding: 0.6rem; font-family: 'Inter',sans-serif; font-size: 0.82rem; cursor: pointer;
+  }
+
+  /* PIN confirm overlay for delete */
+  .pin-confirm {
+    display: none; margin-top: 0.7rem; padding: 0.8rem;
+    background: var(--red-light); border-radius: 10px;
+  }
+  .pin-confirm.show { display: block; }
+  .pin-confirm-label { font-size: 0.78rem; color: var(--red); font-weight: 600; margin-bottom: 0.5rem; }
+  .pin-confirm-row { display: flex; gap: 0.4rem; align-items: center; }
+  .pin-confirm-input {
+    flex: 1; background: white; border: 1px solid #f0c8c8; border-radius: 8px;
+    padding: 0.5rem 0.7rem; font-family: 'Inter',sans-serif; font-size: 1rem;
+    font-weight: 700; letter-spacing: 0.2em; outline: none; color: var(--text-dark);
+    -webkit-text-security: disc;
+  }
+  .pin-confirm-input:focus { border-color: var(--red); }
+  .pin-del-go  { background: var(--red); color: white; border: none; border-radius: 8px; padding: 0.5rem 0.9rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+  .pin-del-cancel { background: none; color: var(--text-mid); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 0.7rem; font-size: 0.82rem; cursor: pointer; }
+  .pin-del-error { font-size: 0.75rem; color: var(--red); margin-top: 0.35rem; min-height: 1em; font-weight: 500; }
+
+  /* empty state */
   .empty-state { text-align: center; padding: 3.5rem 1rem; color: var(--text-light); }
   .empty-icon { display: flex; justify-content: center; margin-bottom: 0.8rem; }
   .empty-state p { font-size: 0.88rem; line-height: 1.6; }
 
-  /* hidden import input */
   #csv-import-input { display: none; }
 </style>
 </head>
@@ -217,15 +207,13 @@
 <!-- ══ LOGIN ══ -->
 <div id="login-screen">
   <div class="app-icon">
-    <i data-lucide="book-open" style="width:36px;height:36px;"></i>
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
   </div>
   <div class="login-title">Notebook</div>
   <div class="login-sub">Privat &amp; gesichert</div>
   <div class="pin-display">
-    <div class="pin-dot" id="d0"></div>
-    <div class="pin-dot" id="d1"></div>
-    <div class="pin-dot" id="d2"></div>
-    <div class="pin-dot" id="d3"></div>
+    <div class="pin-dot" id="d0"></div><div class="pin-dot" id="d1"></div>
+    <div class="pin-dot" id="d2"></div><div class="pin-dot" id="d3"></div>
   </div>
   <div class="pin-pad">
     <button class="pin-btn" onclick="pinPress('1')">1</button>
@@ -240,7 +228,7 @@
     <button class="pin-btn empty"></button>
     <button class="pin-btn" onclick="pinPress('0')">0</button>
     <button class="pin-btn delete" onclick="pinDelete()">
-      <i data-lucide="delete" style="width:20px;height:20px;"></i>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg>
     </button>
   </div>
   <div class="login-error" id="login-error"></div>
@@ -253,9 +241,9 @@
       <h1>Notebook</h1>
       <span>Angemeldet als: Gerold</span>
     </div>
-    <div class="icon-btn" onclick="logout()">
-      <i data-lucide="lock" style="width:18px;height:18px;"></i>
-    </div>
+    <button class="icon-btn" onclick="logout()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </button>
   </div>
 
   <!-- TAB: ERFASSUNG -->
@@ -267,7 +255,6 @@
         <input type="datetime-local" class="form-input" id="entry-datetime">
       </div>
     </div>
-
     <div class="section-header">Notiz</div>
     <div class="list-card" style="padding:1rem;">
       <div class="form-group">
@@ -276,7 +263,7 @@
           placeholder="Beschreibe die Situation genau – was wurde gesagt (wörtlich), wer war dabei, wie war das Verhalten..."></textarea>
       </div>
       <button class="btn-green" onclick="saveEntry()">
-        <i data-lucide="save" style="width:17px;height:17px;"></i>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"/><path d="M7 3v4a1 1 0 0 0 1 1h7"/></svg>
         Eintrag speichern
       </button>
       <div class="save-feedback" id="save-feedback">Gespeichert ✓</div>
@@ -289,13 +276,10 @@
       <span class="count-badge" id="entry-count">0 Einträge</span>
       <div class="toolbar-btns">
         <button class="btn-sm" onclick="exportCSV()">
-          <i data-lucide="download" style="width:14px;height:14px;"></i> Export
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export
         </button>
         <button class="btn-sm" onclick="triggerImport()">
-          <i data-lucide="upload" style="width:14px;height:14px;"></i> Import
-        </button>
-        <button class="btn-sm danger" onclick="deleteAll()">
-          <i data-lucide="trash-2" style="width:14px;height:14px;"></i> Alle
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Import
         </button>
       </div>
     </div>
@@ -306,11 +290,11 @@
   <!-- BOTTOM TAB BAR -->
   <div class="tab-bar">
     <button class="tab-item active" id="tbtn-erfassung" onclick="switchTab('erfassung')">
-      <i data-lucide="pen-line" style="width:22px;height:22px;"></i>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
       Erfassung
     </button>
     <button class="tab-item" id="tbtn-verlauf" onclick="switchTab('verlauf')">
-      <i data-lucide="list-checks" style="width:22px;height:22px;"></i>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
       Verlauf
     </button>
   </div>
@@ -320,15 +304,11 @@
 const CORRECT_PIN = '4864';
 let pinBuffer = '';
 let entries = [];
+let activePanel = null; // track open panel per entry
 
 // ── Storage ──
-function save() {
-  try { localStorage.setItem('tb_v3', JSON.stringify(entries)); } catch(e) {}
-}
-function load() {
-  try { const d = localStorage.getItem('tb_v3'); if (d) entries = JSON.parse(d); }
-  catch(e) { entries = []; }
-}
+function save() { try { localStorage.setItem('tb_v3', JSON.stringify(entries)); } catch(e) {} }
+function load() { try { const d = localStorage.getItem('tb_v3'); if (d) entries = JSON.parse(d); } catch(e) { entries = []; } }
 
 // ── Helpers ──
 function nowLocal() {
@@ -339,16 +319,10 @@ function fmtDate(s) {
   if (!s) return '–';
   return new Date(s).toLocaleString('de-DE', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
 }
-function esc(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-// normalize datetime string for comparison (strip seconds, use T separator)
-function normDt(s) {
-  if (!s) return '';
-  return s.trim().replace(' ','T').slice(0,16);
-}
+function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function normDt(s) { if (!s) return ''; return s.trim().replace(' ','T').slice(0,16); }
 
-// ── PIN ──
+// ── PIN Login ──
 function pinPress(d) {
   if (pinBuffer.length >= 4) return;
   pinBuffer += d; updateDots();
@@ -356,8 +330,7 @@ function pinPress(d) {
 }
 function pinDelete() { pinBuffer = pinBuffer.slice(0,-1); updateDots(); }
 function updateDots() {
-  for (let i=0;i<4;i++)
-    document.getElementById('d'+i).classList.toggle('filled', i < pinBuffer.length);
+  for (let i=0;i<4;i++) document.getElementById('d'+i).classList.toggle('filled', i < pinBuffer.length);
 }
 function checkPin() {
   if (pinBuffer === CORRECT_PIN) {
@@ -388,7 +361,7 @@ function switchTab(name) {
 }
 function setNow() { document.getElementById('entry-datetime').value = nowLocal(); }
 
-// ── Save ──
+// ── Save new entry ──
 function saveEntry() {
   const dt   = document.getElementById('entry-datetime').value;
   const text = document.getElementById('entry-text').value.trim();
@@ -402,59 +375,130 @@ function saveEntry() {
   setTimeout(() => fb.classList.remove('show'), 2000);
 }
 
-// ── Render ──
+// ── SVG icons (inline, no library dependency at render time) ──
+const SVG = {
+  calendar:    `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+  more:        `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>`,
+  pencil:      `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>`,
+  trash:       `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>`,
+  check:       `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
+  notebookpen: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"/><path d="M2 6h4"/><path d="M2 10h4"/><path d="M2 14h4"/><path d="M2 18h4"/><path d="M21.378 3.626a1 1 0 0 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></svg>`,
+};
+
+// ── Render entries ──
 function renderEntries() {
   const list = document.getElementById('entries-list');
   const cnt  = document.getElementById('entry-count');
   cnt.textContent = entries.length + (entries.length===1 ? ' Eintrag' : ' Einträge');
   if (!entries.length) {
-    list.innerHTML = `<div class="empty-state"><div class="empty-icon"><i data-lucide="notebook-pen" style="width:40px;height:40px;"></i></div><p>Noch keine Einträge.<br>Wechsle zu „Erfassung" um zu beginnen.</p></div>`;
-    lucide.createIcons();
+    list.innerHTML = `<div class="empty-state"><div class="empty-icon">${SVG.notebookpen}</div><p>Noch keine Einträge.<br>Wechsle zu „Erfassung" um zu beginnen.</p></div>`;
     return;
   }
   list.innerHTML = entries.map(e => `
     <div class="entry-card" id="ec-${e.id}">
       <div class="entry-meta">
-        <span class="entry-date" style="display:flex;align-items:center;gap:5px;"><i data-lucide="calendar" style="width:13px;height:13px;"></i>${fmtDate(e.dt)}</span>
-        <div class="entry-actions">
-          <button class="entry-action-btn" onclick="toggleConfirm(${e.id})" title="Löschen">
-            <i data-lucide="trash-2" style="width:16px;height:16px;"></i>
-          </button>
+        <span class="entry-date">${SVG.calendar}${fmtDate(e.dt)}</span>
+        <button class="entry-menu-btn" onclick="togglePanel(${e.id})" title="Aktionen">${SVG.more}</button>
+      </div>
+
+      <div class="entry-body" id="body-${e.id}">${esc(e.text)}</div>
+
+      <!-- action panel -->
+      <div class="entry-actions-panel" id="panel-${e.id}">
+        <button class="action-btn" onclick="openEdit(${e.id})">${SVG.pencil} Bearbeiten</button>
+        <button class="action-btn del" onclick="openPinConfirm(${e.id})">${SVG.trash} Löschen</button>
+      </div>
+
+      <!-- edit form -->
+      <div class="entry-edit-form" id="edit-${e.id}">
+        <div class="form-group" style="margin-bottom:0.6rem;">
+          <label class="form-label">Datum &amp; Uhrzeit</label>
+          <input type="datetime-local" class="form-input" id="edit-dt-${e.id}" value="${e.dt}">
+        </div>
+        <div class="form-group" style="margin-bottom:0.6rem;">
+          <label class="form-label">Notiz</label>
+          <textarea class="form-textarea" id="edit-txt-${e.id}" style="min-height:100px;">${e.text.replace(/</g,'&lt;')}</textarea>
+        </div>
+        <div class="edit-row">
+          <button class="btn-edit-cancel" onclick="closeEdit(${e.id})">Abbrechen</button>
+          <button class="btn-edit-save" onclick="saveEdit(${e.id})">${SVG.check} Speichern</button>
         </div>
       </div>
-      <div class="entry-body">${esc(e.text)}</div>
-      <div class="delete-confirm" id="dc-${e.id}">
-        <span>Eintrag löschen?</span>
-        <div style="display:flex;gap:0.4rem;">
-          <button class="del-no"  onclick="toggleConfirm(${e.id})">Abbrechen</button>
-          <button class="del-yes" onclick="delEntry(${e.id})">Löschen</button>
+
+      <!-- PIN confirm for delete -->
+      <div class="pin-confirm" id="pinconf-${e.id}">
+        <div class="pin-confirm-label">PIN eingeben um zu löschen</div>
+        <div class="pin-confirm-row">
+          <input type="password" inputmode="numeric" maxlength="4" class="pin-confirm-input"
+            id="pin-input-${e.id}" placeholder="• • • •"
+            oninput="onPinInput(${e.id})" autocomplete="off">
+          <button class="pin-del-cancel" onclick="closePinConfirm(${e.id})">Abbrechen</button>
         </div>
+        <div class="pin-del-error" id="pin-err-${e.id}"></div>
       </div>
     </div>`).join('');
-  lucide.createIcons();
 }
 
-function toggleConfirm(id) {
-  const el = document.getElementById('dc-'+id);
-  if (el) el.classList.toggle('show');
+// ── Panel toggle ──
+function togglePanel(id) {
+  const panel = document.getElementById('panel-'+id);
+  const isOpen = panel.classList.contains('show');
+  // close all open panels/edits/pin confirms
+  closeAll();
+  if (!isOpen) panel.classList.add('show');
 }
 
-function delEntry(id) {
-  entries = entries.filter(e => e.id !== id);
+function closeAll() {
+  document.querySelectorAll('.entry-actions-panel').forEach(el => el.classList.remove('show'));
+  document.querySelectorAll('.entry-edit-form').forEach(el => el.classList.remove('show'));
+  document.querySelectorAll('.pin-confirm').forEach(el => el.classList.remove('show'));
+}
+
+// ── Edit ──
+function openEdit(id) {
+  closeAll();
+  document.getElementById('edit-'+id).classList.add('show');
+  document.getElementById('edit-txt-'+id).focus();
+}
+function closeEdit(id) {
+  document.getElementById('edit-'+id).classList.remove('show');
+}
+function saveEdit(id) {
+  const dt   = document.getElementById('edit-dt-'+id).value;
+  const text = document.getElementById('edit-txt-'+id).value.trim();
+  if (!text) { alert('Notiz darf nicht leer sein.'); return; }
+  const e = entries.find(x => x.id === id);
+  if (e) { e.dt = dt || e.dt; e.text = text; }
   save(); renderEntries();
 }
 
-function deleteAll() {
-  if (!entries.length) return;
-  if (!confirm(`Alle ${entries.length} Einträge unwiderruflich löschen?`)) return;
-  entries = []; save(); renderEntries();
+// ── Delete with PIN ──
+function openPinConfirm(id) {
+  closeAll();
+  const pc = document.getElementById('pinconf-'+id);
+  pc.classList.add('show');
+  document.getElementById('pin-input-'+id).value = '';
+  document.getElementById('pin-err-'+id).textContent = '';
+  setTimeout(() => document.getElementById('pin-input-'+id).focus(), 100);
+}
+function closePinConfirm(id) {
+  document.getElementById('pinconf-'+id).classList.remove('show');
+}
+function onPinInput(id) {
+  const input = document.getElementById('pin-input-'+id);
+  if (input.value.length === 4) {
+    if (input.value === CORRECT_PIN) {
+      entries = entries.filter(e => e.id !== id);
+      save(); renderEntries();
+    } else {
+      document.getElementById('pin-err-'+id).textContent = 'Falscher PIN.';
+      input.value = '';
+    }
+  }
 }
 
 // ── CSV Export ──
-function escapeCsv(s) {
-  return '"' + String(s).replace(/"/g, '""') + '"';
-}
-
+function escapeCsv(s) { return '"' + String(s).replace(/"/g,'""') + '"'; }
 function exportCSV() {
   if (!entries.length) { alert('Keine Einträge vorhanden.'); return; }
   const rows = ['Datum,Uhrzeit,Notiz'];
@@ -464,14 +508,11 @@ function exportCSV() {
     const zeit  = d.toLocaleTimeString('de-DE', {hour:'2-digit',minute:'2-digit'});
     rows.push([escapeCsv(datum), escapeCsv(zeit), escapeCsv(e.text)].join(','));
   });
-  const bom  = '\uFEFF'; // UTF-8 BOM for Excel compatibility
-  const blob = new Blob([bom + rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+  const blob = new Blob(['\uFEFF' + rows.join('\n')], {type:'text/csv;charset=utf-8;'});
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
-  a.href = url;
-  a.download = 'Notebook_' + new Date().toISOString().slice(0,10) + '.csv';
-  a.click();
-  URL.revokeObjectURL(url);
+  a.href = url; a.download = 'Notebook_' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click(); URL.revokeObjectURL(url);
 }
 
 // ── CSV Import ──
@@ -479,74 +520,51 @@ function triggerImport() {
   document.getElementById('csv-import-input').value = '';
   document.getElementById('csv-import-input').click();
 }
-
 function importCSV(event) {
-  const file = event.target.files[0];
-  if (!file) return;
+  const file = event.target.files[0]; if (!file) return;
   const reader = new FileReader();
   reader.onload = function(e) {
-    const text = e.target.result.replace(/^\uFEFF/, ''); // strip BOM
+    const text  = e.target.result.replace(/^\uFEFF/,'');
     const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
     if (lines.length < 2) { alert('Keine gültigen Einträge gefunden.'); return; }
-
-    // build set of existing timestamps for dedup check (YYYY-MM-DDTHH:MM)
     const existing = new Set(entries.map(e => normDt(e.dt)));
-
     let added = 0, skipped = 0;
     const newEntries = [];
-
     for (let i = 1; i < lines.length; i++) {
       const cols = parseCsvLine(lines[i]);
       if (cols.length < 3) { skipped++; continue; }
-
       const [datum, zeit, ...rest] = cols;
-      const notiz = rest.join(','); // in case text contained commas
-
-      // parse de date DD.MM.YYYY HH:MM → ISO
+      const notiz = rest.join(',');
       let dtStr = '';
       try {
         const [day,month,year] = datum.split('.');
         dtStr = `${year}-${month.padStart(2,'0')}-${day.padStart(2,'0')}T${zeit.padStart(5,'0')}`;
       } catch(err) { skipped++; continue; }
-
       const key = normDt(dtStr);
       if (existing.has(key)) { skipped++; continue; }
-
       existing.add(key);
       newEntries.push({ id: Date.now() + i, dt: dtStr, text: notiz });
       added++;
     }
-
-    // merge: new entries appended, existing stay; sort by date desc
     entries = [...entries, ...newEntries].sort((a,b) => new Date(b.dt) - new Date(a.dt));
-    save();
-    renderEntries();
-    alert(`Import abgeschlossen:\n✓ ${added} neu hinzugefügt\n– ${skipped} übersprungen (bereits vorhanden oder ungültig)`);
+    save(); renderEntries();
+    alert(`Import abgeschlossen:\n✓ ${added} neu hinzugefügt\n– ${skipped} übersprungen`);
   };
   reader.readAsText(file, 'UTF-8');
 }
-
-// Simple CSV line parser (handles quoted fields with escaped quotes)
 function parseCsvLine(line) {
-  const result = [];
-  let cur = '', inQ = false;
+  const result = []; let cur = '', inQ = false;
   for (let i = 0; i < line.length; i++) {
     const c = line[i];
-    if (c === '"') {
-      if (inQ && line[i+1] === '"') { cur += '"'; i++; }
-      else { inQ = !inQ; }
-    } else if (c === ',' && !inQ) {
-      result.push(cur); cur = '';
-    } else {
-      cur += c;
-    }
+    if (c === '"') { if (inQ && line[i+1] === '"') { cur += '"'; i++; } else { inQ = !inQ; } }
+    else if (c === ',' && !inQ) { result.push(cur); cur = ''; }
+    else { cur += c; }
   }
-  result.push(cur);
-  return result;
+  result.push(cur); return result;
 }
 
 // ── Init ──
-window.addEventListener('DOMContentLoaded', () => { lucide.createIcons(); });
+window.addEventListener('DOMContentLoaded', () => { setNow(); });
 </script>
 </body>
 </html>
